@@ -22,7 +22,7 @@ exclude = ["docs", ".idea"]
 
 [dependencies]
 log = "0.4"
-pod = { git = "https://github.com/jinzhao-dev/pod", rev = "d7dba56" }
+pod = { git = "https://github.com/asterinas/pod", rev = "d7dba56" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 x86_64 = "0.14.8"
