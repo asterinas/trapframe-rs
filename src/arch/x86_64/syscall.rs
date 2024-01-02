@@ -14,6 +14,7 @@ pub fn init() {
             .get_extended_processor_and_feature_identifiers()
             .unwrap()
             .has_syscall_sysret());
+        #[cfg(not(feature = "intel_tdx"))]
         Efer::update(|efer| {
             efer.insert(EferFlags::SYSTEM_CALL_EXTENSIONS);
         });
