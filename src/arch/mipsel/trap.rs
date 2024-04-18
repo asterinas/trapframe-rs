@@ -1,4 +1,5 @@
 use core::arch::{asm, global_asm};
+use pod::Pod;
 
 global_asm!(include_str!("trap.S"));
 
@@ -59,7 +60,7 @@ pub struct TrapFrame {
 }
 
 /// Saved registers on a trap.
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy, Pod)]
 #[repr(C)]
 pub struct UserContext {
     /// TLS
@@ -108,7 +109,7 @@ impl UserContext {
 }
 
 /// General registers
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy, Pod)]
 #[repr(C)]
 pub struct GeneralRegs {
     pub hi: usize,
