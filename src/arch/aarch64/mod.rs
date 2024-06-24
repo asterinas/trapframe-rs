@@ -1,3 +1,5 @@
+use pod::Pod;
+
 #[cfg(target_os = "linux")]
 mod fncall;
 #[cfg(any(target_os = "none", target_os = "uefi"))]
@@ -9,7 +11,7 @@ pub use fncall::*;
 pub use trap::*;
 
 /// Saved registers on a trap.
-#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Pod, Eq, PartialEq)]
 #[repr(C)]
 pub struct UserContext {
     /// Trap num: Source and Kind
@@ -30,7 +32,7 @@ pub struct UserContext {
 }
 
 /// General registers
-#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Pod, Eq, PartialEq)]
 #[repr(C)]
 pub struct GeneralRegs {
     pub x1: usize,
